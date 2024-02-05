@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Web development Lab</title>
+    <link rel="stylesheet" type="text/css" href="TaskManager.css">
+  </head>
+  <body>
+    <h2>Task Manager</h2>
+    <div id="taskManager"></div>
+   
+    <script type="text/javascript" src="TaskManager.js"></script>
+    <script type="text/javascript">
+        function getRandomIntInclusive(min, max) {
+            const minCeiled = Math.ceil(min);
+            const maxFloored = Math.floor(max);
+            return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); 
+        }
+
+        function generateTasks(){
+            let tasks = [];
+            for(let i=-10; i<10; i++){
+                var currentDate = new Date();
+                currentDate.setDate(currentDate.getDate() + i);
+                for(let j=0; j<getRandomIntInclusive(1,5); j++){
+                    const task = {
+                    name: "Task"+ Math.floor(Math.random() * 100) + 1,
+                    dueDate: currentDate,
+                    priority: getRandomIntInclusive(0,5)
+                    }
+                    tasks.push(task);
+                }
+            }
+            return tasks;
+        }
+
+        let tasksInfo = generateTasks();
+        tm = new TaskManager(tasksInfo, "taskManager", function (taskDetails) {
+          console.log("Task Info:", taskDetails.name + "/" + taskDetails.dueDate + "/" + taskDetails.priority);
+        });
+        tm.render(new Date());
+
+    </script>
+  </body>
+</html>
