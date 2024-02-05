@@ -50,7 +50,6 @@ class TaskManager {
 
     table.appendChild(headerRow);
 
-    // Create table body
     const body = document.createElement("tbody");
 
     // Iterate over each row (week)
@@ -75,8 +74,6 @@ class TaskManager {
           const taskDate = new Date(task.dueDate);
           return taskDate.toDateString() === cellDate.toDateString();
         });
-
-        // Create a list of tasks for the current cell
         const ul = document.createElement("ul");
         filteredTasks.forEach((task) => {
           const li = document.createElement("li");
@@ -87,18 +84,14 @@ class TaskManager {
           ul.appendChild(li);
         });
 
-        // Append the tasks list to the cell
         cell.appendChild(ul);
 
-        // Append the cell to the row
         row.appendChild(cell);
       }
 
-      // Append the row to the table body
       body.appendChild(row);
     }
 
-    // Append the table body to the table
     table.appendChild(body);
 
     // Append the table to the container
