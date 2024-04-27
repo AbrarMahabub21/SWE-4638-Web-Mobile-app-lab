@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Quiz</title>
+    
+</head>
+<body>
+    <h1>Create Quiz</h1>
+    <form id="quizForm">
+        <div>
+            <label for="question">Question:</label>
+            <input type="text" id="question" name="question" required>
+        </div>
+        <div>
+            <label for="option1">Option 1:</label>
+            <input type="text" id="option1" name="options" required>
+        </div>
+        <div>
+            <label for="option2">Option 2:</label>
+            <input type="text" id="option2" name="options" required>
+        </div>
+        <div>
+            <label for="option3">Option 3:</label>
+            <input type="text" id="option3" name="options" required>
+        </div>
+        <div>
+            <label for="option4">Option 4:</label>
+            <input type="text" id="option4" name="options" required>
+        </div>
+        <div>
+            <label for="correctAnswer">Correct Answer:</label>
+            <select id="correctAnswer" name="correctAnswer" required>
+                <option value="">Select correct answer</option>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+                <option value="option4">Option 4</option>
+            </select>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Add your JavaScript code here -->
+    <script>
+        document.getElementById('quizForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Get form data
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            // You can now handle the form data and submit it to your backend or process it further
+            console.log('Form data:', data);
+            // Reset form fields
+            this.reset();
+        });
+    </script>
+</body>
+</html>
